@@ -1,0 +1,34 @@
+from loader import bot
+from telebot.types import Message
+from peewee import IntegrityError
+from utils.create_db import User
+from keyboards.keyboard import bot_keyboard
+
+
+@bot.message_handler(state="*", commands=['start'])
+def start(message: Message) -> None:
+    """
+    Функция для команды /start. Приветствует пользователя и регистрирует его в базе данных.
+    :param message:
+    """
+    user_id = message.from_user.id
+    username = message.from_user.username
+    first_name = message.from_user.first_name
+    last_name = message.from_user.last_name
+
+    try:
+        User.create(
+            user_id=user_id,
+            username=username,
+            first_name=first_name,
+            last_name=last_name
+        )
+        bot.send_message(user_id, f'Привет, {username} (id:{user_id})!', reply_markup=bot_keyboard())
+        print(f'[INFO] {username} with id {user_id} was registered!\n'
+              f'[INFO] First name: {first_name}\n'
+              f'[INFO] Last name: {last_name}')
+
+    except IntegrityError:
+        print(f'[INFO] {username} with id {user_id} try register again!')
+        bot.send_message(user_id, f'И снова привет, {username} (id:{user_id})!', reply_markup=bot_keyboard())
+
