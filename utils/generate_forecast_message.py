@@ -1,7 +1,9 @@
 from typing import Dict
+from loguru import logger
 
 
 def generate_forecast_message(json_weather: Dict) -> str:
+    logger.info('Generating message with forecast')
     if 'error' not in json_weather:
         forecast = ''
         forecast += f"{json_weather['location']['name']}, прогноз погоды:\n\n"
@@ -26,4 +28,5 @@ def generate_forecast_message(json_weather: Dict) -> str:
 
         return forecast
     else:
+        logger.error('City is not found!')
         return 'Населенный пункт не найден!'

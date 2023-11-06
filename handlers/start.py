@@ -29,5 +29,5 @@ def start(message: Message) -> None:
 
     except IntegrityError:
         logger.info(f'{username} with id {user_id} try register again!')
-        bot.send_message(user_id, f'И снова привет, {username} (id:{user_id})!', reply_markup=bot_keyboard())
+        bot.send_message(user_id, f'И снова привет, {username} (id:{user_id})!')
 
