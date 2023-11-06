@@ -3,6 +3,7 @@ from telebot.types import Message
 from peewee import IntegrityError
 from utils.create_db import User
 from keyboards.keyboard import bot_keyboard
+from loguru import logger
 
 
 @bot.message_handler(state="*", commands=['start'])
@@ -24,11 +25,9 @@ def start(message: Message) -> None:
             last_name=last_name
         )
         bot.send_message(user_id, f'Привет, {username} (id:{user_id})!', reply_markup=bot_keyboard())
-        print(f'[INFO] {username} with id {user_id} was registered!\n'
-              f'[INFO] First name: {first_name}\n'
-              f'[INFO] Last name: {last_name}')
+        logger.info(f'{username} with id {user_id} was registered!')
 
     except IntegrityError:
-        print(f'[INFO] {username} with id {user_id} try register again!')
-        bot.send_message(user_id, f'И снова привет, {username} (id:{user_id})!', reply_markup=bot_keyboard())
+        logger.info(f'{username} with id {user_id} try register again!')
+        bot.send_message(user_id, f'И снова привет, {username} (id:{user_id})!')
 

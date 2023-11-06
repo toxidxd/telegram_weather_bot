@@ -1,8 +1,10 @@
 import os
 from dotenv import load_dotenv, find_dotenv
+from loguru import logger
 
 
 if not find_dotenv():
+    logger.info('.env not found')
     exit('.env not found')
 else:
     load_dotenv()

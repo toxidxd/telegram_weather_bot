@@ -1,5 +1,6 @@
 from peewee import CharField, IntegerField, Model, SqliteDatabase
 from config_data.config import BOT_DB
+from loguru import logger
 
 
 db = SqliteDatabase(BOT_DB)
@@ -34,3 +35,4 @@ def create_models() -> None:
     Функция для создания базы данных и моделей в них
     """
     db.create_tables(BaseModel.__subclasses__())
+    logger.info('Database created')

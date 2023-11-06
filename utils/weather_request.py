@@ -1,9 +1,11 @@
 import requests
 from typing import Dict
 from config_data.config import API_KEY
+from loguru import logger
 
 
 def weather_request(city: str) -> Dict:
+
     url = "https://weatherapi-com.p.rapidapi.com/forecast.json"
 
     querystring = {"q": city, "days": "3"}
@@ -13,6 +15,6 @@ def weather_request(city: str) -> Dict:
         "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com"
     }
 
+    logger.info(f'Send request to API')
     response = requests.get(url, headers=headers, params=querystring)
-    print(response.json())
     return response.json()
