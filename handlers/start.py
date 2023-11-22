@@ -25,9 +25,9 @@ def start(message: Message) -> None:
             last_name=last_name
         )
         bot.send_message(user_id, f'Привет, {username} (id:{user_id})!', reply_markup=bot_keyboard())
-        logger.info(f'{username} with id {user_id} was registered!')
+        logger.info(f'{username}:{user_id} was registered!')
 
     except IntegrityError:
-        logger.info(f'{username} with id {user_id} try register again!')
+        logger.info(f'{username}:{user_id} try register again!')
         bot.send_message(user_id, f'И снова привет, {username} (id:{user_id})!')
 

@@ -15,6 +15,6 @@ def weather_request(city: str) -> Dict:
         "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com"
     }
 
-    logger.info(f'Send request to API')
+    logger.info(f'Send request to API ({city})')
     response = requests.get(url, headers=headers, params=querystring)
     return response.json()

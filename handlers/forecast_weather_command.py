@@ -11,7 +11,7 @@ from loguru import logger
 def forecast_weather_command(message: Message) -> None:
     user_id = message.from_user.id
     if User.get_or_none(User.user_id == user_id) is None:
-        logger.info(f'Unregistered user {message.from_user.username}')
+        logger.info(f'Unregistered user {message.from_user.username}:{message.from_user.id}')
         bot.reply_to(message, 'Мы еще не знакомы. Введите команду /start')
         return
     else:

@@ -3,7 +3,7 @@ from loguru import logger
 
 
 def generate_forecast_message(json_weather: Dict) -> str:
-    logger.info('Generating message with forecast')
+    logger.info(f'Generating message with forecast in {json_weather["location"]["name"]}')
     if 'error' not in json_weather:
         forecast = ''
         forecast += f"{json_weather['location']['name']}, прогноз погоды:\n\n"
