@@ -4,6 +4,7 @@ from utils.set_bot_commands import set_bot_commands
 from loader import bot
 from telebot.custom_filters import StateFilter
 from loguru import logger
+import time
 
 
 def main() -> None:
@@ -13,7 +14,11 @@ def main() -> None:
     bot.add_custom_filter(StateFilter(bot))
     create_models()
     set_bot_commands(bot)
-    bot.infinity_polling()
+    try:
+        bot.infinity_polling()
+    except Exception as ex:
+        print(ex)
+        time.sleep(10)
 
 
 if __name__ == '__main__':
