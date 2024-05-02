@@ -1,6 +1,7 @@
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton
 from loguru import logger
 
+
 def bot_keyboard():
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     b_weather = KeyboardButton("Погода")
