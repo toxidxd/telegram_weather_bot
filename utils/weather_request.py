@@ -5,7 +5,6 @@ from loguru import logger
 
 
 def weather_request(city: str) -> Dict:
-
     url = "https://weatherapi-com.p.rapidapi.com/forecast.json"
 
     querystring = {"q": city, "days": "3"}

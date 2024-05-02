@@ -22,4 +22,3 @@ def current_weather_command(message: Message) -> None:
         bot.send_message(message.chat.id, generate_current_message(weather_request(user_location)))
         bot.send_message(message.chat.id, generate_forecast_message(weather_request(user_location)))
         logger.info(f'{message.from_user.username}:{message.from_user.id} gets weather by coordinates {user_location}')
-

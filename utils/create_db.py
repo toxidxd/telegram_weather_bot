@@ -2,7 +2,6 @@ from peewee import CharField, IntegerField, Model, SqliteDatabase
 from config_data.config import BOT_DB
 from loguru import logger
 
-
 db = SqliteDatabase(BOT_DB)
 
 
@@ -10,6 +9,7 @@ class BaseModel(Model):
     """
     Базовый класс модели.
     """
+
     class Meta:
         database = db
 

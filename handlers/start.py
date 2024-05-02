@@ -30,4 +30,3 @@ def start(message: Message) -> None:
     except IntegrityError:
         logger.info(f'{username}:{user_id} try register again!')
         bot.send_message(user_id, f'И снова привет, {username} (id:{user_id})!')
-

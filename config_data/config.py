@@ -2,13 +2,11 @@ import os
 from dotenv import load_dotenv, find_dotenv
 from loguru import logger
 
-
 if not find_dotenv():
     logger.info('.env not found')
     exit('.env not found')
 else:
     load_dotenv()
-
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")  # токен Telegram бота
 API_KEY = os.getenv("API_KEY")  # токен доступа к API

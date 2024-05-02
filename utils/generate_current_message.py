@@ -5,8 +5,8 @@ from loguru import logger
 def generate_current_message(json_weather: Dict) -> str:
     logger.info(f'Generating message with current weather in {json_weather["location"]["name"]}')
     if 'error' not in json_weather:
-        wind_speed = round(float(json_weather['current']['wind_kph'])//3.6, 2)
-        wind_gusts = round(float(json_weather['current']['gust_mph'])//3.6, 2)
+        wind_speed = round(float(json_weather['current']['wind_kph']) // 3.6, 2)
+        wind_gusts = round(float(json_weather['current']['gust_mph']) // 3.6, 2)
 
         my_message = (f"{json_weather['location']['name']}, погода в реальном времени:\n"
                       f"{json_weather['location']['localtime']}\n"
