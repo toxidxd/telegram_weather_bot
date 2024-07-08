@@ -1,0 +1,14 @@
+version: '2.3'
+
+services:
+  weather_bot:
+    image: weather_bot
+    container_name: weather_bot
+    working_dir: /app
+#    build:
+#      context: .
+
+    command: python3 -u main.py
+#    volumes:
+#      - ./:/app
+
